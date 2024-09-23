@@ -6,7 +6,7 @@ FAMILY = GW1N-9C
 DEVICE = GW1NR-LV9QN88PC6/I5
 
 #Nombre del proyecto... Acá ponen el nombre que deseen.
-PROYECT = 
+PROYECT = Sumador
 
 #Fuentes de diseno
 SOURCES := $(wildcard ../design/*.v ../design/*.sv) #Todas las fuentes .v o .sv que estan en design
@@ -15,7 +15,7 @@ SOURCES := $(wildcard ../design/*.v ../design/*.sv) #Todas las fuentes .v o .sv 
 
 #Fuente de simulacion
 #aca va el testbench que quieran simular
-TESTBENCH = ../sim/TB.sv
+TESTBENCH = ../sim/mainTB.sv
 
 # Constraints para el proyecto
 #aca va el archivo de constraints del proyecto
@@ -26,7 +26,7 @@ TOP_DESIGN =
 TOP_TB     = 
 
 #nombre del vcd que va a generar el tb
-VCD_FILE = 
+VCD_FILE = .vcd
 
 
 all: synth pnr bitstream load
