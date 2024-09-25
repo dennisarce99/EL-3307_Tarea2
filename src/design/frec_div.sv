@@ -1,24 +1,14 @@
 module FrecDivider (
   input clk,
-  input rst,
-  clk_div
+  output clk_div
 );
 
-    output clk_div
-    reg [27:0] cont;
+    reg [26:0] cont = 0;
 
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst) begin
-            cont  <= 0;
-            clk_div <= 0;
-            end
-        else begin
-            cont <= cont + 28'd1;
-            if (cont == 28'd27) begin
-                cont  <= 0;
-                clk_div <= ~clk_div;
-                end
-        end
+    always @(posedge clk) begin
+        cont <= (cont >= 269999) ? 0:(cont+1);
     end
+
+    assign clk_div = (cont == 269999) ? 1'b1:1'b0;
 
 endmodule

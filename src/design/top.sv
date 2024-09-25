@@ -8,11 +8,13 @@ module moduleTop (
     wire clk_div;
     wire [3:0] row;
     wire [3:0] num;
+    wire [3:0] num_o;
+    wire [3:0] digit;
 
-    FrecDivider Div(
+    Debounce Div(
+        .num(num),
         .clk(clk),
-        .rst(rst),
-        .clk_div(clk_div)
+        .num_o(num_o)
     );
 
     module_Rows Rows(

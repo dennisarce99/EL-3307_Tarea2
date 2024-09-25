@@ -9,7 +9,7 @@ module module_Rows(
 
     logic [1:0] cont;
 
-    always_ff @(posedge(clk_div) or posedge(rst)) begin:
+    always_ff @(posedge clk_div) begin:
         if (rst) begin
             cont <= 0;
         end
