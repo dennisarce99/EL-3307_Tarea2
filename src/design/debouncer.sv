@@ -16,6 +16,11 @@ module Debounce(
 
     assign nq2 = ~q2;
     assign num_o = q1 & nq2;
-    digit = (num_o = q1 & nq2) q2:1b'1111;
+    
+    always @(posedge clk_div) begin
+        if (num_o = q1 & nq2) begin
+            digit = q2;
+        end
+    end
 
 endmodule
