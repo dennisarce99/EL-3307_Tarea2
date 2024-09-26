@@ -15,18 +15,18 @@ SOURCES := $(wildcard ../design/*.v ../design/*.sv) #Todas las fuentes .v o .sv 
 
 #Fuente de simulacion
 #aca va el testbench que quieran simular
-TESTBENCH = ../sim/mainTB.sv
+TESTBENCH = ../sim/main_tb.sv
 
 # Constraints para el proyecto
 #aca va el archivo de constraints del proyecto
 CONSTRAINTS = ../constr/constraints.cst
 
 #el top se indica sin la extension .v, esto hace referencia al nombre que le pusieron al módulo y no al archivo en si.
-TOP_DESIGN = moduleTop
-TOP_TB     = 
+TOP_DESIGN = suma
+TOP_TB     = main_tb
 
 #nombre del vcd que va a generar el tb
-VCD_FILE = .vcd
+VCD_FILE = main_tb.vcd
 
 
 all: synth pnr bitstream load
