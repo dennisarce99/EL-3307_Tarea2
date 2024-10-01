@@ -8,11 +8,11 @@ module Debounce(
     wire q1, q2, nq2, q0;
     wire num;
 
-    FrecDivider ClkDiv(.clk(clk), .clk_div(clk_div));
+    FrecDivider ClkDiv(clk, clk_div);
 
-    D_FF KB_i (.dff_clk(clk), .clk_en(clk_div), .d(num), .q(q0));
-    D_FF KB_FF1(.dff_clk(clk), .clk_en(clk_div), .d(q0), .q(q1));
-    D_FF KB_FF1(.dff_clk(clk), .clk_en(clk_div), .d(q1), .q(q2));
+    D_FF KB_i (clk, clk_div, num, q0);
+    D_FF KB_FF1(clk, clk_div, q0, q1);
+    D_FF KB_FF1(clk, clk_div, q1, q2);
 
     assign nq2 = ~q2;
     assign num_o = q1 & nq2;

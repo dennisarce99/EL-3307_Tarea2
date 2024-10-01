@@ -49,4 +49,5 @@ module main_tb;
         #10;
         $finish;
     end
+
 endmodule

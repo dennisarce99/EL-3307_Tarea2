@@ -17,17 +17,17 @@ module moduleTop (
         .num_o(num_o)
     );
 
-    module_Rows Rows(
-        .rst(rst),
+    SweptRows Filas(
         .clk_div(clk_div),
+        .rst(rst),
         .row(row)
     );
 
-    module_Cols Cols(
-        .rst(rst),
+    KB_Read Teclado(
         .clk_div(clk_div),
-        .row(row),
+        .rst(rst),
         .col(col),
+        .row(row),
         .num(num)
     );
     
