@@ -1,3 +1,12 @@
+IO_LOC  "anodos[3]" 38;
+IO_PORT "anodos[3]" IO_TYPE=LVCMOS33;
+
+IO_LOC  "anodos[2]" 39;
+IO_PORT "anodos[2]" IO_TYPE=LVCMOS33;
+
+IO_LOC  "anodos[1]" 40;
+IO_PORT "anodos[1]" IO_TYPE=LVCMOS33;
+
 IO_LOC  "anodos[0]" 41;
 IO_PORT "anodos[0]" IO_TYPE=LVCMOS33;
 
