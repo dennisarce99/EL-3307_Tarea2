@@ -1,9 +1,9 @@
 module bin_decimal ( //usando el algoritmo de doble dabble
     input [11:0] binario,
-    output reg [15:0] // salida BCD 4 digitos
-    
+    output reg [15:0] bcd// salida BCD 4 digitos
 );
-integer i;
+
+    integer i;
     always @ (binario) begin
         bcd = 0;  // Inicializar BCD a 0
         for (i = 0; i < 12; i = i + 1) begin
@@ -16,6 +16,4 @@ integer i;
         end
     end
 
-
-    
 endmodule

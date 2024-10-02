@@ -23,19 +23,19 @@ module kb_tb;
     initial begin
         #10
         columna = 4'b0001;
-        $display("Tecla: fila=%b", fila);
+        $display("Tecla: fila=%b, columna=%b, num=%b", fila, columna, num);
         
         #2346
         columna = 4'b0010;
-        $display("Tecla: fila=%b", fila);
+        $display("Tecla: fila=%b, columna=%b, num=%b", fila, columna, num);
         
         #157
         columna = 4'b0100;
-        $display("Tecla: fila=%b", fila);
+        $display("Tecla: fila=%b, columna=%b, num=%b", fila, columna, num);
         
         #270
         columna = 4'b1000;
-        $display("Tecla: fila=%b", fila);
+        $display("Tecla: fila=%b, columna=%b, num=%b", fila, columna, num);
         $finish;
     end
 

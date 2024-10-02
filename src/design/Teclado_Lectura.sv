@@ -1,12 +1,9 @@
 module KB_Read (
-    input logic clk_div,
+    input logic clk,
     input logic rst,
     input logic [3:0] col,
     input logic [3:0] row,
     output logic [3:0] num);
-
-    wire clk_div;
-    wire row;
 
     always @(row) begin
         if (row == 4'b1000) begin
