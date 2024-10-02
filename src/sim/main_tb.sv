@@ -5,13 +5,19 @@ module main_tb;
     logic clk;
     logic [11:0] num1, num2;
     logic [12:0] resultado;
+    logic [15:0] bcd;
+    logic [3:0] anodos;
+    logic [6:0] segmentos;
 
     // Instancia del módulo sumador que queremos probar
-    suma plus(
+    moduleTop top_sumador (
         .clk(clk),
         .num1(num1),
         .num2(num2),
-        .resultado(resultado)
+        .resultado(resultado),
+        .bcd(bcd),
+        .anodos(anodos),
+        .segmentos(segmentos)
     );
 
     // Generación del reloj (un ciclo cada 10 unidades de tiempo)
@@ -25,29 +31,30 @@ module main_tb;
         num2 = 12'd0;
 
         // Prueba 1: Suma de 123 + 456
-        #10;
         num1 = 12'd123;
         num2 = 12'd456;
-        #10;
-        $display("Prueba 1: num1 = %d, num2 = %d, resultado = %d", num1, num2, resultado);
+        $display("Prueba 1: num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
+        #40;
 
         // Prueba 2: Suma de 789 + 210
-        #10;
         num1 = 12'd789;
         num2 = 12'd210;
-        #10;
         $display("Prueba 2: num1 = %d, num2 = %d, resultado = %d", num1, num2, resultado);
+         #40;
 
         // Prueba 3: Suma de 999 + 999 (debería dar un resultado con acarreo)
-        #10;
         num1 = 12'd999;
         num2 = 12'd999;
-        #10;
         $display("Prueba 3: num1 = %d, num2 = %d, resultado = %d", num1, num2, resultado);
+        #40;
 
         // Termina la simulación
-        #10;
         $finish;
     end
 
+    // Monitoreo de señales
+    initial begin
+        $monitor("Tiempo: %0t | Anodos = %b | Segmentos = %b | BCD = %h", 
+                 $time, anodos, segmentos, bcd);
+    end
 endmodule

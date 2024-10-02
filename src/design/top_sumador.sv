@@ -1,0 +1,31 @@
+module moduleTop (
+        // Declaración de señales
+    input logic clk,
+    input logic [11:0] num1, num2,
+    output logic [12:0] resultado,
+    output logic [15:0] bcd,
+    output logic [3:0] anodos,
+    output logic [6:0] segmentos
+);
+   
+    // Instancia del módulo sumador que queremos probar
+    suma plus(
+        .clk(clk),
+        .num1(num1),
+        .num2(num2),
+        .resultado(resultado)
+    );
+
+    bin_decimal coverter ( //usando el algoritmo de doble dabble
+    .binario (resultado), //13 bits para manejar el acarreo
+    .bcd (bcd)      // salida BCD 4 digitos
+     );
+
+    display despliegue (
+    .clk (clk),
+    .bcd (bcd), 
+    .anodos (anodos),
+    .segmentos (segmentos)
+    );
+    
+endmodule
