@@ -28,17 +28,26 @@ module pruebatb;
     initial begin
         // Inicializar señales
         clock = 0;
-        reset = ~reset;
-        num_ent = 4'b1000;
-        btn_digits = ~btn_digits;
-        num_ent = 4'b0100;
-        btn_digits = ~btn_digits;
-        num_ent = 4'b0010;
+        num_ent = 4'b0110;
         btn_digits = ~btn_digits;
         num_ent = 4'b0001;
         btn_digits = ~btn_digits;
-        
+        num_ent = 4'b0000;
+        btn_digits = ~btn_digits;
+        num_ent = 4'b0000;
+         
         $display("Prueba 1: num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
+        #40;
+
+        num_ent = 4'b0010;
+        btn_digits = ~btn_digits;
+        num_ent = 4'b0011;
+        btn_digits = ~btn_digits;
+        num_ent = 4'b0000;
+        btn_digits = ~btn_digits;
+        num_ent = 4'b0000;
+         
+        $display("Prueba : num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
         #40;
 
         $finish;

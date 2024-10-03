@@ -13,18 +13,18 @@ module SumaTop (
     logic [15:0] num2;
     logic [15:0] resultado;
 
-    display Sevens(
-        .clk(clk),
-        .bcd(numero),
-        .anodos(anodos),
-        .segmentos(segmentos)
-        );
-    
     LectorDigitos Entradas(
         .clk(clk),
         .operador(operador),
         .col(col),
-        .num(resultado)
+        .num(num1)
+        );
+    
+    display Sevens(
+        .clk(clk),
+        .bcd(num1),
+        .anodos(anodos),
+        .segmentos(segmentos)
         );
         
     suma Adder(
@@ -36,10 +36,10 @@ module SumaTop (
 
     always_ff @(posedge clk) begin
         if (contador == 0) begin
-            contador <= 0;
+            resultado <= num1;
         end
         else if (contador == 2'b01) begin
-            num1 <= resultado;
+            resultado <= num2;
         end
         else if (contador == 2'b10) begin
             num2 <= resultado;
@@ -49,7 +49,7 @@ module SumaTop (
         end        
     end
 
-    always @(rst) begin
+    always @(~rst) begin
         contador <= contador + 1'b1;
     end
 
