@@ -23,10 +23,10 @@ module SweptRows(
     
     always @(state) begin
         case (state)
-            srow0: begin row = 4'b0001; next_state = srow1; end
-            srow1: begin row = 4'b0010; next_state = srow2; end
-            srow2: begin row = 4'b0100; next_state = srow3; end
-            srow3: begin row = 4'b1000; next_state = srow0; end
+            srow0: row = 4'b0001;
+            srow1: row = 4'b0010;
+            srow2: row = 4'b0100;
+            srow3: row = 4'b1000;
             default: next_state = srow0;
         endcase
     end

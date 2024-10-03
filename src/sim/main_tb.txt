@@ -57,4 +57,9 @@ module main_tb;
         $monitor("Tiempo: %0t | Anodos = %b | Segmentos = %b | BCD = %h", 
                  $time, anodos, segmentos, bcd);
     end
+
+    initial begin
+        $dumpfile("main_tb.vcd");
+        $dumpvars(0, main_tb);
+    end
 endmodule

@@ -1,0 +1,131 @@
+$date
+	Thu Oct 03 02:47:19 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module pruebatb $end
+$var wire 7 ! seg [6:0] $end
+$var wire 4 " anode [3:0] $end
+$var reg 1 # btn_digits $end
+$var reg 1 $ clock $end
+$var reg 16 % num1 [15:0] $end
+$var reg 16 & num2 [15:0] $end
+$var reg 4 ' num_ent [3:0] $end
+$var reg 1 ( reset $end
+$var reg 16 ) resultado [15:0] $end
+$scope module tsumador $end
+$var wire 1 $ clk $end
+$var wire 4 * col [3:0] $end
+$var wire 1 # operador $end
+$var wire 1 ( rst $end
+$var wire 7 + segmentos [6:0] $end
+$var wire 16 , resultado [15:0] $end
+$var wire 16 - numero [15:0] $end
+$var wire 4 . anodos [3:0] $end
+$var reg 2 / contador [1:0] $end
+$var reg 16 0 num1 [15:0] $end
+$var reg 16 1 num2 [15:0] $end
+$scope module Adder $end
+$var wire 1 $ clk $end
+$var wire 16 2 num1 [15:0] $end
+$var wire 16 3 num2 [15:0] $end
+$var wire 16 4 resultado [15:0] $end
+$var reg 16 5 num [15:0] $end
+$upscope $end
+$scope module Entradas $end
+$var wire 1 $ clk $end
+$var wire 4 6 col [3:0] $end
+$var wire 1 # operador $end
+$var reg 2 7 cont [1:0] $end
+$var reg 16 8 num [15:0] $end
+$upscope $end
+$scope module Sevens $end
+$var wire 16 9 bcd [15:0] $end
+$var wire 1 $ clk $end
+$var wire 4 : d [3:0] $end
+$var wire 4 ; c [3:0] $end
+$var wire 4 < b [3:0] $end
+$var wire 4 = a [3:0] $end
+$var reg 4 > anodos [3:0] $end
+$var reg 4 ? digit [3:0] $end
+$var reg 7 @ segmentos [6:0] $end
+$var reg 2 A select [1:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 A
+b1111111 @
+bx ?
+b1110 >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+bx00010001 8
+b0 7
+b1 6
+bx 5
+bx 4
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+b1110 .
+bx -
+bx00010001 ,
+b1111111 +
+b1 *
+bx )
+x(
+b1 '
+bx &
+bx %
+0$
+x#
+b1110 "
+b1111111 !
+$end
+#5000
+b1101 "
+b1101 .
+b1101 >
+b1 A
+1$
+#10000
+0$
+#15000
+b1011 "
+b1011 .
+b1011 >
+b10 A
+1$
+#20000
+0$
+#25000
+b111 "
+b111 .
+b111 >
+b11 A
+1$
+#30000
+0$
+#35000
+b1110 "
+b1110 .
+b1110 >
+b0 A
+1$
+#40000
+0$
