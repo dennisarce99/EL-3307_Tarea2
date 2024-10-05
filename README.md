@@ -11,6 +11,7 @@ En esta tarea se implementa un sistema digital que permite realizar la suma de d
 ## 3. Propuesta de Solución
 ### 3.1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
+- **FSM**: Máquinas de estados finitos
 
 ### 3.2 Descripción general del sistema
 Se desarrolló un sistema para mostrar el resultado de la suma de dos números binarios en displays de 7 segmentos, utilizando varios módulos interconectados. El diseño incluye un módulo de lector del número que lee los dígitos de entrada y construye el número de 16 bits para después poder realizar la suma. Luego el módulo de suma se encarga de realizar la operación de ambos números. El resultado de la suma se convierte a BCD (Binary Coded Decimal) mediante el módulo del despliegue de 7 segmentos, donde se gestiona la multiplexación de los 4 displays de 7 segmentos, mostrando los dígitos en formato BCD uno a la vez, controlando tanto los ánodos como los segmentos. El sistema es sincrónico, operando bajo un reloj que asegura que la suma, la conversión y el despliegue se realicen de manera coordinada y eficiente.
@@ -97,13 +98,54 @@ El testbench mostró que los displays enciendan uno a la vez y que ewstos cambie
 ## 4. Análisis simulación funcional
 
 ## 5. Análisis consumo de recursos
+```SystemVerilog
+=== SumaTop ===
+
+   Number of wires:                 63
+   Number of wire bits:            176
+   Number of public wires:          63
+   Number of public wire bits:     176
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 99
+     DFF                             2
+     DFFE                            2
+     DFFRE                          24
+     IBUF                            7
+     LUT1                           14
+     LUT2                           23
+     LUT3                            5
+     LUT4                            7
+     MUX2_LUT5                       4
+     OBUF                           11
+```
+```SystemVerilog
+Info: Device utilisation:
+Info: 	                 VCC:     1/    1   100%
+Info: 	               SLICE:    74/ 8640     0%
+Info: 	                 IOB:    18/  274     6%
+Info: 	                ODDR:     0/  274     0%
+Info: 	           MUX2_LUT5:     4/ 4320     0%
+Info: 	           MUX2_LUT6:     0/ 2160     0%
+Info: 	           MUX2_LUT7:     0/ 1080     0%
+Info: 	           MUX2_LUT8:     0/ 1056     0%
+Info: 	                 GND:     1/    1   100%
+Info: 	                RAMW:     0/  270     0%
+Info: 	                 GSR:     1/    1   100%
+Info: 	                 OSC:     0/    1     0%
+Info: 	                rPLL:     0/    2     0%
+```
 
 ## 6. Reporte de velocidades máximas de reloj
 
 ## 7. Conclusiones
-
+Para sistemas que necesitan mantener un dato por cada ciclo de operación las FSM son una gran respuesta para esta situación. En este caso, se planteó una FSM para guardar los números ingresados para luego realizar la suma. Los números se ingresaron por medio de DIP switch ya que no se pudo implementar el teclado matricial. Los FSM deben estar bien definidas sus siguientes estados para que no provoquen problemas y no se pierdan los datos o se tomen datos incorrectos. Se realizó la decodificación de los números en binario para los  displays 7 segmentos con el uso de la función case. Los displays 7 segmentos encienden uno a la vez, esto por medio de FSM controlados por flancos positivosdel reloj interno de la FPGA.
 
 ## 8. Problemas encontrados durante el proyecto
+- Hubo problemas al definir las FSM que se utilizaron.
+- Al realizar las FSM, se creaban latches de manera accidental, con variables no definidas correctamente.
+- No se pudieron tomar correctamente las teclas presionadas del teclado hexadecimal.
 
 ## 9. Referencias
 [0] David Harris y Sarah Harris. *Digital Design and Computer Architecture. RISC-V Edition.* Morgan Kaufmann, 2022. ISBN: 978-0-12-820064-3
