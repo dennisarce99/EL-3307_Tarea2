@@ -22,22 +22,28 @@ module pruebatb;
     );
 
     // Generación del reloj (un ciclo cada 10 unidades de tiempo)
-    always #5 clock = ~clock;
+    always #10 clock = ~clock;
 
     // Bloque inicial que define el comportamiento del test
     initial begin
         // Inicializar señales
         clock = 0;
+        
         num_ent = 4'b0110;
-        btn_digits = ~btn_digits;
+        btn_digits = 1'b1;
+        btn_digits = 1'b0;
         num_ent = 4'b0001;
-        btn_digits = ~btn_digits;
+        btn_digits = 1'b1;
+        btn_digits = 1'b0;
         num_ent = 4'b0000;
-        btn_digits = ~btn_digits;
+        btn_digits = 1'b1;
+        btn_digits = 1'b0;
         num_ent = 4'b0000;
+        reset = 1'b1;
+        reset = 1'b0;
          
         $display("Prueba 1: num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
-        #40;
+        #250;
 
         $finish;
     end
