@@ -1,14 +1,18 @@
 # Tarea 2: Diseño digital sincrónico en HDL
 
-## 1. Introucción
-
+## 1. Introducción
+En esta tarea se implementa un sistema digital que permite realizar la suma de dos números binarios y desplegar el resultado en un conjunto de displays de 7 segmentos. El diseño incluye varios módulos que trabajan de manera conjunta para lograr el objetivo de hacer la suma de dos números de 12 bits, convertir el resultado de la suma a un formato adecuado para su visualización y poder controlar los displays de forma sincronizada. A partir del diseño, se asegura que el resultado de la suma sea correctamente mostrado en los displays, garantizando la sincronización con el reloj del sistema y una correcta decodificación de los números.
 ## 2. Objetivos
-
+- Elaborar una implementación de un diseño digital sincrónico en una FPGA.
+- Implementar una sencilla función de suma aritmética en un HDL.
+- Implementar un algoritmo de despliegue de datos en tres dispositivos de 7 segmentos.
 ## 3. Propuesta de Solución
 ### 3.1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
 
 ### 3.2 Descripción general del sistema
+
+Se desarrolló un sistema para mostrar el resultado de la suma de dos números binarios en displays de 7 segmentos, utilizando varios módulos interconectados. El diseño incluye un módulo de lector del número que lee los dígitos de entrada y construye el número de 16 bits para después poder realizar la suma. Luego el módulo de suma se encarga de realizar la operación de ambos números. El resultado de la suma se convierte a BCD (Binary Coded Decimal) mediante el módulo del despliegue de 7 segmentos, donde se gestiona la multiplexación de los 4 displays de 7 segmentos, mostrando los dígitos en formato BCD uno a la vez, controlando tanto los ánodos como los segmentos. El sistema es sincrónico, operando bajo un reloj que asegura que la suma, la conversión y el despliegue se realicen de manera coordinada y eficiente.
 
 ### 3.3 Subsistema de lectura del teclado mecánico hexadecimal
 
