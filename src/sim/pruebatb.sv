@@ -39,17 +39,6 @@ module pruebatb;
         $display("Prueba 1: num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
         #40;
 
-        num_ent = 4'b0010;
-        btn_digits = ~btn_digits;
-        num_ent = 4'b0011;
-        btn_digits = ~btn_digits;
-        num_ent = 4'b0000;
-        btn_digits = ~btn_digits;
-        num_ent = 4'b0000;
-         
-        $display("Prueba : num1 = %d, num2 = %d, resultado = %d | %b", num1, num2, resultado, resultado);
-        #40;
-
         $finish;
     end
 
