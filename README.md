@@ -96,6 +96,7 @@ Diagramas...
 El testbench mostró que los displays enciendan uno a la vez y que ewstos cambien cada flanco de reloj.
 
 ## 4. Análisis simulación funcional
+La simulación general del sistema genera una señal de reloj que cambia cada 5 ns, durante estos cambios se introducen números en bianrio que simulan la entrada de datos del DIP switch y también se simula el presionar el botón que cambia el dígito para ingresar y el botón que cambia el número y hace la suma, y al final e muestran en la consola el valor del primer y segundo número, y el resultado de la suma. Además, también en la se muestra cada cierta cantidad de tiempo el valor de los displays encendidos y los segmentos encendidos de los displays.
 
 ## 5. Análisis consumo de recursos
 ```SystemVerilog
@@ -138,6 +139,7 @@ Info: 	                rPLL:     0/    2     0%
 ```
 
 ## 6. Reporte de velocidades máximas de reloj
+
 
 ## 7. Conclusiones
 Para sistemas que necesitan mantener un dato por cada ciclo de operación las FSM son una gran respuesta para esta situación. En este caso, se planteó una FSM para guardar los números ingresados para luego realizar la suma. Los números se ingresaron por medio de DIP switch ya que no se pudo implementar el teclado matricial. Los FSM deben estar bien definidas sus siguientes estados para que no provoquen problemas y no se pierdan los datos o se tomen datos incorrectos. Se realizó la decodificación de los números en binario para los  displays 7 segmentos con el uso de la función case. Los displays 7 segmentos encienden uno a la vez, esto por medio de FSM controlados por flancos positivosdel reloj interno de la FPGA.
