@@ -139,7 +139,7 @@ Info: 	                rPLL:     0/    2     0%
 ```
 
 ## 6. Reporte de velocidades máximas de reloj
-
+El módulo Adder ejecutado desde el módulo SumaTop llegó a alcanzar una velocidad máxima de reloj 362.84 MHz, lo cual provocó que este módulo sufriera de asincronía con cada flanco de reloj ejecutado, pero como el valor de resultado solo se da cuando se tienen los dos números digitados y siempre se estaría ejecutando con los valores ingresados hasta que se presione el botón, no supuso ningún problema al ejecutar el progrma.
 
 ## 7. Conclusiones
 Para sistemas que necesitan mantener un dato por cada ciclo de operación las FSM son una gran respuesta para esta situación. En este caso, se planteó una FSM para guardar los números ingresados para luego realizar la suma. Los números se ingresaron por medio de DIP switch ya que no se pudo implementar el teclado matricial. Los FSM deben estar bien definidas sus siguientes estados para que no provoquen problemas y no se pierdan los datos o se tomen datos incorrectos. Se realizó la decodificación de los números en binario para los  displays 7 segmentos con el uso de la función case. Los displays 7 segmentos encienden uno a la vez, esto por medio de FSM controlados por flancos positivosdel reloj interno de la FPGA.
