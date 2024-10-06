@@ -16,6 +16,10 @@ En esta tarea se implementa un sistema digital que permite realizar la suma de d
 ### 3.2 Descripción general del sistema
 Se desarrolló un sistema para mostrar el resultado de la suma de dos números binarios en displays de 7 segmentos, utilizando varios módulos interconectados. El diseño incluye un módulo de lector del número que lee los dígitos de entrada y construye el número de 16 bits para después poder realizar la suma. Luego el módulo de suma se encarga de realizar la operación de ambos números. El resultado de la suma se convierte a BCD (Binary Coded Decimal) mediante el módulo del despliegue de 7 segmentos, donde se gestiona la multiplexación de los 4 displays de 7 segmentos, mostrando los dígitos en formato BCD uno a la vez, controlando tanto los ánodos como los segmentos. El sistema es sincrónico, operando bajo un reloj que asegura que la suma, la conversión y el despliegue se realicen de manera coordinada y eficiente.
 
+![diagrama de bloques del sistema en general](doc/Diag_de_bloques.jpeg) 
+
+Figura 1. Diagrama de bloques del sistema general.
+
 ### 3.3 Subsistema de lectura del teclado mecánico hexadecimal
 Al diseño final no se pudo implementar el teclado hexadecimal funcional, así que se decidió utilizar un DIP switch como reemplazo para las entradas del subsistema de lectura de datos.
 
@@ -41,8 +45,6 @@ module LectorDigitos (
 ##### 4. Criterios de diseño
 Para poder capturar un número y así poder realizar la suma, se realizó el siguiente diseño para leer una secuencia de dígitos de entrada y construir un número de 16 bits a partir de ellos. Este módulo es útil en sistemas digitales donde se requiere capturar múltiples dígitos ingresados, por ejemplo, desde un teclado matricial o una interfaz similar, y combinarlos para formar un número completo que pueda ser procesado o visualizado posteriormente.
 
-Diagramas...
-
 ##### 5. Testbench
 El testbench recibe números en codificación binaria y simula que los botones se presionen para ingresar los dígitos y realizar la suma aritmética de ambos.
 
@@ -64,8 +66,6 @@ module suma (
 
 ##### 3. Criterios de diseño
 Este módulo se encarga de tomar dos números binarios de 12 bits (num1 y num2) y realizar la suma de ambos. El resultado (resultado) es un valor binario de 13 bits para manejar el acarreo que podría generarse al sumar números grandes. La suma se realiza en el flanco positivo del reloj para garantizar que el proceso sea sincrónico.
-
-Diagramas
 
 ##### 4. Testbench
 El testbench probó que los dos números binarios si realizan la suma entre ambos y que estuviera correcta. Además de verificar que el resultado si sea el correcto, también es lo suficientemente grande para manejar el acarreo que podría generarse al sumar números grandes.
@@ -90,13 +90,12 @@ module display (
 
 ##### 4. Criterios de diseño
 El módulo se encarga de mostrar un número de 4 dígitos en BCD en 4 displays de 7 segmentos, integrando la suma y la conversión a BCD que se realizaron en los módulos anteriores. Utiliza multiplexación para controlar cada display de manera secuencial, activando solo uno a la vez mediante la señal de reloj. También incluye un decodificador para traducir cada dígito BCD al código correspondiente para los 7 segmentos.
-Diagramas...
 
 ##### 5. Testbench
-El testbench mostró que los displays enciendan uno a la vez y que ewstos cambien cada flanco de reloj.
+El testbench mostró que los displays enciendan uno a la vez y que estos cambian en cada flanco de reloj.
 
 ## 4. Análisis simulación funcional
-La simulación general del sistema genera una señal de reloj que cambia cada 5 ns, durante estos cambios se introducen números en bianrio que simulan la entrada de datos del DIP switch y también se simula el presionar el botón que cambia el dígito para ingresar y el botón que cambia el número y hace la suma, y al final e muestran en la consola el valor del primer y segundo número, y el resultado de la suma. Además, también en la se muestra cada cierta cantidad de tiempo el valor de los displays encendidos y los segmentos encendidos de los displays.
+La simulación general del sistema genera una señal de reloj que cambia cada 5 ns, durante estos cambios se introducen números en binario que simulan la entrada de datos del DIP switch y también se simula el presionar el botón que cambia el dígito para ingresar y el botón que cambia el número y hace la suma, y al final muestran en la consola el valor del primer y segundo número, y el resultado de la suma. Además, también se muestra cada cierta cantidad de tiempo el valor de los displays encendidos y los segmentos encendidos de los displays.
 
 ## 5. Análisis consumo de recursos
 ```SystemVerilog
@@ -142,7 +141,7 @@ Info: 	                rPLL:     0/    2     0%
 El módulo Adder ejecutado desde el módulo SumaTop llegó a alcanzar una velocidad máxima de reloj 362.84 MHz, lo cual provocó que este módulo sufriera de asincronía con cada flanco de reloj ejecutado, pero como el valor de resultado solo se da cuando se tienen los dos números digitados y siempre se estaría ejecutando con los valores ingresados hasta que se presione el botón, no supuso ningún problema al ejecutar el progrma.
 
 ## 7. Conclusiones
-Para sistemas que necesitan mantener un dato por cada ciclo de operación las FSM son una gran respuesta para esta situación. En este caso, se planteó una FSM para guardar los números ingresados para luego realizar la suma. Los números se ingresaron por medio de DIP switch ya que no se pudo implementar el teclado matricial. Los FSM deben estar bien definidas sus siguientes estados para que no provoquen problemas y no se pierdan los datos o se tomen datos incorrectos. Se realizó la decodificación de los números en binario para los  displays 7 segmentos con el uso de la función case. Los displays 7 segmentos encienden uno a la vez, esto por medio de FSM controlados por flancos positivosdel reloj interno de la FPGA.
+Para sistemas que necesitan mantener un dato por cada ciclo de operación las FSM son una gran respuesta para esta situación. En este caso, se planteó una FSM para guardar los números ingresados para luego realizar la suma. Los números se ingresaron por medio de DIP switch ya que no se pudo implementar el teclado matricial. Los FSM deben estar bien definidas sus siguientes estados para que no provoquen problemas y no se pierdan los datos o se tomen datos incorrectos. Se realizó la decodificación de los números en binario para los displays 7 segmentos con el uso de la función case. Los displays 7 segmentos encienden uno a la vez, esto por medio de FSM controlados por flancos positivos del reloj interno de la FPGA.
 
 ## 8. Problemas encontrados durante el proyecto
 - Hubo problemas al definir las FSM que se utilizaron.
@@ -152,6 +151,4 @@ Para sistemas que necesitan mantener un dato por cada ciclo de operación las FS
 ## 9. Referencias
 [0] David Harris y Sarah Harris. *Digital Design and Computer Architecture. RISC-V Edition.* Morgan Kaufmann, 2022. ISBN: 978-0-12-820064-3
 
-## Apendices:
-### Apendice 1:
-texto, imágen, etc
+
